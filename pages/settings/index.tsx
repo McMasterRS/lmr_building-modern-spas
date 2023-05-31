@@ -7,7 +7,7 @@ import VerticalTabs from '@/components/TabPanel/VerticalTabs'
 import {Container} from '@mui/material'
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
-export default function ViewTranscript() {
+export default function Settings() {
     useEffect(() => {
         document.title = 'Settings'
     }, [])

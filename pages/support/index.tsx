@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
-export default function Home() {
+export default function Support() {
     useEffect(() => {
         document.title = 'Support'
     }, [])
