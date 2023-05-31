@@ -1,0 +1,19 @@
+/* Specific styles for non-active navbar links */
+.nonActive {
+    color: white;
+}
+
+/* Specific styles for active navbar links */
+.active {
+    color: #7a003c;
+    background: white;
+}
+
+.active:hover {
+    color: #7a003c;
+    background: white;
+}
+
+.title:hover {
+    color: #fdbf57;
+}
