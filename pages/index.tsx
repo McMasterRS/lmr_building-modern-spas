@@ -113,6 +113,11 @@ export default function Home() {
                   value={selectedFiles}
                   onChange={handleChange}
                   hideSizeText
+                  sx={{
+                      "& .MuiFileInput-placeholder": {
+                          color: "#767676 !important",
+                      },
+                  }}
               />
           </Stack>
       </main>

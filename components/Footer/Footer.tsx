@@ -6,16 +6,24 @@ import Paper from '@mui/material/Paper'
 import {Grid} from '@mui/material'
 import Link from 'next/link'
 import Stack from "@mui/material/Stack";
+import {useTheme} from "@mui/material/styles";
 
 export default function Footer() {
     return (
         <Paper
             sx={{
-                mt: 'calc(10% + 60px)',
-                position: 'fixed',
+                [useTheme().breakpoints.between('xs', 'md')]: {
+                    position: 'relative',
+                },
+                [useTheme().breakpoints.up('md')]: {
+                    position: 'fixed',
+                },
                 bottom: 0,
                 width: '100%',
                 borderRadius: 0,
+                [useTheme().breakpoints.between('xs', 'md')]: {
+                    height: '93',
+                },
             }}
             component="footer"
             square

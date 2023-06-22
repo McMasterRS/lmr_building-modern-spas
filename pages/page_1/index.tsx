@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DownloadIcon from '@mui/icons-material/Download';
 import {alpha, styled} from '@mui/material/styles';
+import Tooltip from "@mui/material/Tooltip";
 
 const StyledMenu = styled((props: MenuProps) => (
     <Menu
@@ -80,14 +81,14 @@ export default function Page_1() {
                   justifyContent="center"
                   alignItems="center">
                   <Typography variant="h1">Page 1</Typography>
-
                   <MacButton
                       id="download-button"
                       sx={{
                           position: 'fixed',
-                          top: 10,
-                          right: 100,
+                          top: 20,
+                          right: 10,
                           zIndex: 2000,
+                          display: {xs: 'none', md: 'flex'}
                       }}
                       aria-controls={
                           openMenu ? 'download-menu' : undefined
@@ -102,6 +103,30 @@ export default function Page_1() {
                   >
                       Download
                   </MacButton>
+
+                  <Tooltip title={"Download"} >
+                      <MacButton
+                          id="download-button"
+                          sx={{
+                              position: 'fixed',
+                              top: 20,
+                              right: 10,
+                              zIndex: 2000,
+                              display: {xs: 'flex', md: 'none'}
+                          }}
+                          aria-controls={
+                              openMenu ? 'download-menu' : undefined
+                          }
+                          aria-haspopup="true"
+                          aria-expanded={openMenu ? 'true' : undefined}
+                          variant="contained"
+                          mainColor="secondary"
+                          onClick={handleClickMenu}
+                          endIcon={<KeyboardArrowDownIcon />}
+                      >
+                          <DownloadIcon />
+                      </MacButton>
+                  </Tooltip>
                   <StyledMenu
                       id="download-menu"
                       MenuListProps={{

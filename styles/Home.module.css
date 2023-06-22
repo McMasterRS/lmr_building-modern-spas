@@ -4,7 +4,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
-  min-height: 100vh;
+  min-height: calc(100vh - 164px);
+  margin-top: auto;
 }
 
 .page {
@@ -12,7 +13,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 164px);
   padding-top: 1rem;
 }
 
@@ -22,7 +23,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 164px);
   padding-top: 1rem;
   padding-bottom: 2rem;
 }

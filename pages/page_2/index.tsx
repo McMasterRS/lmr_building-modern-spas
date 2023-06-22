@@ -41,7 +41,7 @@ export default function Page_2() {
                           sx={{
                               position: 'fixed',
                               top: 10,
-                              right: 100,
+                              right: 10,
                               zIndex: 2000,
                           }}
                           icon={<SpeedDialIcon />}
