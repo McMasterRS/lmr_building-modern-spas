@@ -8,6 +8,7 @@ import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import {MuiFileInput} from 'mui-file-input'
+import {useTheme} from '@mui/material/styles'
 
 export interface SnackbarMessage {
     message: string;
@@ -115,7 +116,7 @@ export default function Home() {
                   hideSizeText
                   sx={{
                       "& .MuiFileInput-placeholder": {
-                          color: "#767676 !important",
+                          color:  (useTheme().palette.mode === 'light' ? '#767676' : '#d3d3d3') + '!important',
                       },
                   }}
               />
