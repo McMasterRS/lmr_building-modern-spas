@@ -1,3 +1,5 @@
+'use client';
+
 import styles from '@/styles/Home.module.css'
 import Typography from '@mui/material/Typography'
 import {useEffect} from "react";

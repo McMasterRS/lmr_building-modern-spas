@@ -1,7 +1,8 @@
-import React from "react";
+'use client';
+
+import React, {useEffect} from "react";
 import styles from '@/styles/Home.module.css'
 import Typography from '@mui/material/Typography'
-import {useEffect} from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";

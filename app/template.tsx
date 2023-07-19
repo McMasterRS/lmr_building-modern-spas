@@ -1,7 +1,8 @@
+'use client';
+
 import React from 'react'
-import type { AppProps } from 'next/app'
 import CssBaseline from '@mui/material/CssBaseline'
-import {createTheme, ThemeProvider, useTheme} from '@mui/material/styles'
+import {createTheme, ThemeProvider} from '@mui/material/styles'
 import themeOptions from '@/config/theme'
 import Navbar from "@/components/Navbar/Navbar";
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -11,7 +12,7 @@ export const ColorModeContext = React.createContext({
     toggleColorMode: () => {},
 })
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function Template({children}: {children?: React.ReactNode} ) {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
 
     const [themeMode, setThemeMode] = React.useState<'light' | 'dark' | null>(null)
@@ -66,7 +67,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <ThemeProvider theme={theme}>
                 <Navbar />
                 <CssBaseline />
-                <Component {...pageProps} />
+                {children}
                 <Footer />
             </ThemeProvider>
         </ColorModeContext.Provider>

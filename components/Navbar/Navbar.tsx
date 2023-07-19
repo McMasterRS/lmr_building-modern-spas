@@ -1,4 +1,3 @@
-import * as React from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -6,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
 import Link from 'next/link'
-import {useRouter} from 'next/router'
+import {usePathname, useRouter} from 'next/navigation'
 import styles from '@/styles/NavBar.module.css'
 import {MacIconNavButton, MacNavButton,} from '@/components/MacComponents/MacNavButton'
 import Tooltip from '@mui/material/Tooltip'
@@ -23,7 +22,8 @@ import SettingsIcon from '@mui/icons-material/Settings'
 import {useTheme} from '@mui/material/styles'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
-import {ColorModeContext} from '@/pages/_app'
+import {ColorModeContext} from "@/app/template";
+import React from "react";
 
 const pages = [
     ['Page 1', '/page_1'],
@@ -56,7 +56,7 @@ export default function Navbar() {
             };
 
     const router = useRouter()
-    const currentRoute = router.pathname
+    const currentRoute = usePathname()
 
     const icons = [<LooksOneIcon key={'transcripts-page'} />, <LooksTwoIcon key={'privacy-policy'}/>]
 

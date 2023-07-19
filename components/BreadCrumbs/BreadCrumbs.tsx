@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 import {LinkProps} from '@mui/material/Link'
 import Link from 'next/link'
-import {useRouter} from 'next/router'
+import {usePathname, useRouter} from 'next/navigation'
 import React from 'react'
 import Box from '@mui/material/Box'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
@@ -28,7 +28,9 @@ function LinkRouter(props: LinkRouterProps) {
 export default function BreadCrumbs() {
     const router = useRouter()
 
-    const pathnames = router.pathname.split('/').filter(x => x)
+    const pathname = usePathname();
+
+    const pathnames = pathname ? pathname.split('/').filter(x => x) : [];
 
     return (
         <Box sx={{paddingBottom: 2}}>
