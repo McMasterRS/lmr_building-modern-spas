@@ -23,7 +23,7 @@ export interface State {
     messageInfo?: SnackbarMessage;
 }
 
-export default function Home() {
+export default function Page() {
     const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
     const [snackPack, setSnackPack] = React.useState<readonly SnackbarMessage[]>([]);
     const [open, setOpen] = React.useState(false);
