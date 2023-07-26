@@ -1,2 +1,2 @@
-# Demo Next.js/MUI McMaster-Branded Website
-A demo website that conforms to the McMaster Digital Brand Standards built using Next.js and MUI
+# Demo Next.js/MUI for the "Building Modern Single-Page Applications" Learning Module
+A demo website used for the "Building Modern Single-Page Applications" learning module built using Next.js and MUI.
