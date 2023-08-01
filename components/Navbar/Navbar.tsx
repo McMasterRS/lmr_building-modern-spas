@@ -22,7 +22,7 @@ import SettingsIcon from '@mui/icons-material/Settings'
 import {useTheme} from '@mui/material/styles'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
-import {ColorModeContext} from "@/app/template";
+import {ColorModeContext} from "@/components/Provider/Provider";
 import React from "react";
 
 const pages = [
