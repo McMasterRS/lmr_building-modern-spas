@@ -1,7 +1,7 @@
 import {Roboto, Roboto_Condensed} from "next/font/google";
 
 const roboto = Roboto({
-    weight: ['300', '700'],
+    weight: ['400', '900'],
     style: ['normal', 'italic'],
     subsets: ['latin'],
     display: 'swap',
@@ -25,6 +25,7 @@ const themeOptions = {
         h1: {
             fontFamily: roboto_condensed.style.fontFamily,
             fontSize: '50pt',
+            fontWeight: 400,
         },
         h2: {
             fontFamily: roboto_condensed.style.fontFamily,
@@ -34,6 +35,7 @@ const themeOptions = {
         h3: {
             fontFamily: roboto_condensed.style.fontFamily,
             fontSize: '20pt',
+            fontWeight: 400,
         },
         h4: {
             fontFamily: roboto.style.fontFamily,
