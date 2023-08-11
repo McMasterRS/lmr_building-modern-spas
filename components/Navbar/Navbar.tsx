@@ -24,6 +24,9 @@ import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
 import {ColorModeContext} from "@/components/Provider/Provider";
 import React from "react";
+import SkipLink from "@/components/SkipLink/SkipLink";
+import {SkipButton} from "@/components/SkipLink/SkipButton";
+import styles_skip from '@/styles/SkipLink.module.scss'
 
 const pages = [
     ['Page 1', '/page_1'],
@@ -114,6 +117,11 @@ export default function Navbar() {
             style={{backgroundImage: 'none'}}
             sx={{zIndex: theme => theme.zIndex.drawer + 1, borderRadius: 0}}
         >
+            <Box sx={{zIndex: 1300}}>
+                <SkipLink className={styles_skip.skipLink} skipTo={"main:first-of-type"}>
+                    <SkipButton mainColor={"primary"} sx={{marginTop:2.4, marginLeft:2, color: 'white'}}>Skip to main content</SkipButton>
+                </SkipLink>
+            </Box>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
@@ -221,7 +229,7 @@ export default function Navbar() {
                                         ? styles.active
                                         : styles.nonActive
                                 }
-                                sx={{my: 2, color: 'white', display: 'block'}}
+                                sx={{mx:0.3, my: 2, color: 'white', display: 'block'}}
                             >
                                 {page[0]}
                             </MacNavButton>

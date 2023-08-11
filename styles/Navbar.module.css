@@ -13,3 +13,9 @@
     color: #7a003c;
     background: white;
 }
+
+.active:focus-visible {
+    color: white;
+    background: #707070;
+    outline-color: #fdbf57;
+}
