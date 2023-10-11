@@ -24,5 +24,17 @@
     "support": {
         "title": "Soutien",
         "title2": "Aide et soutien"
+    },
+    "settings": {
+        "title": "Paramètres",
+        "tabs": {
+            "notifications": "Notifications",
+            "privacy": "Confidentialité",
+            "accessibility": "Accessibilité",
+            "account": "Compte",
+            "dropdown-placeholder": "Menu déroulant Démo",
+            "option-placeholder": "Option",
+            "placeholder": "Espace réservé"
+        }
     }
 }

@@ -24,5 +24,17 @@
     "support": {
         "title": "Support",
         "title2": "Help and Support"
+    },
+    "settings": {
+        "title": "Settings",
+        "tabs": {
+            "notification": "Notification",
+            "privacy": "Privacy",
+            "accessibility": "Accessibility",
+            "account": "Account",
+            "dropdown-placeholder": "Demo Dropdown Menu",
+            "option-placeholder": "Option",
+            "placeholder": "Placeholder"
+        }
     }
 }
