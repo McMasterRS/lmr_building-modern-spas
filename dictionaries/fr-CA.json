@@ -1,0 +1,9 @@
+{
+    "index": {
+        "title": "Bonjour le monde",
+        "drop-area-placeholder": "Cliquez ici et sélectionnez le(s) fichier(s)",
+        "primary": "Primaire",
+        "secondary": "Secondaire",
+        "btn-clicked-msg": "Bouton cliqué!"
+    }
+}

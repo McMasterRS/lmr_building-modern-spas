@@ -1,0 +1,9 @@
+{
+    "index": {
+        "title": "Hello World",
+        "drop-area-placeholder": "Click here and select file(s)",
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "btn-clicked-msg": "Button Clicked!"
+    }
+}
