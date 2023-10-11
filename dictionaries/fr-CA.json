@@ -5,5 +5,9 @@
         "primary": "Primaire",
         "secondary": "Secondaire",
         "btn-clicked-msg": "Bouton cliqué!"
+    },
+    "footer": {
+        "contact-us": "Contactez-nous",
+        "help-and-support": "Aide et soutien"
     }
 }
