@@ -9,7 +9,7 @@ import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import {useTranslations} from 'next-intl';
 
 export default function Support() {
-    const localized = useTranslations('page-2');
+    const localized = useTranslations('support');
     useEffect(() => {
         document.title = localized('title')
     }, [])
