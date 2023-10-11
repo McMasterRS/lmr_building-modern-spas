@@ -1,5 +1,4 @@
 import {Metadata} from 'next'
-import {Provider} from "@/components/Provider/Provider";
 import {NextIntlClientProvider} from 'next-intl';
 import {notFound} from 'next/navigation';
 

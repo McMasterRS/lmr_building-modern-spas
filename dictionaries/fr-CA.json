@@ -20,5 +20,9 @@
         "edit": "Modifier",
         "save": "Sauvegarder",
         "delete": "Supprimer"
+    },
+    "support": {
+        "title": "Soutien",
+        "title2": "Aide et soutien"
     }
 }
