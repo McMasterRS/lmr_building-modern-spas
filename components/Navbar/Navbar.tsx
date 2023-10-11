@@ -27,15 +27,16 @@ import React from "react";
 import SkipLink from "@/components/SkipLink/SkipLink";
 import {SkipButton} from "@/components/SkipLink/SkipButton";
 import styles_skip from '@/styles/SkipLink.module.scss'
-
-const pages = [
-    ['Page 1', '/page_1'],
-    ['Page 2', '/page_2'],
-]
+import {useTranslations} from 'next-intl';
 
 export default function Navbar() {
+    const localized = useTranslations('navbar');
     const theme = useTheme()
     const colorMode = React.useContext(ColorModeContext)
+    const pages = [
+        [localized('pages.1'), '/page_1'],
+        [localized('pages.2'), '/page_2'],
+    ]
 
     const imgStyle = {
         paddingTop: '10px',
@@ -94,8 +95,8 @@ export default function Navbar() {
                             )}
                         </ListItemIcon>
                         <ListItemText primary={theme.palette.mode === 'dark'
-                            ? 'Switch to Light Mode'
-                            : 'Switch to Dark Mode'} />
+                            ? localized('switch-mode.light')
+                            : localized('switch-mode.dark')} />
                     </ListItemButton>
                 </ListItem>
                 <ListItem key={'settings'} disablePadding>
@@ -119,7 +120,7 @@ export default function Navbar() {
         >
             <Box sx={{zIndex: 1300}}>
                 <SkipLink className={styles_skip.skipLink} skipTo={"main:first-of-type"}>
-                    <SkipButton mainColor={"primary"} sx={{marginTop:2.4, marginLeft:2, color: 'white'}}>Skip to main content</SkipButton>
+                    <SkipButton mainColor={"primary"} sx={{marginTop:2.4, marginLeft:2, color: 'white'}}>{localized('skip-btn')}</SkipButton>
                 </SkipLink>
             </Box>
             <Container maxWidth="xl">
@@ -239,8 +240,8 @@ export default function Navbar() {
                         <Tooltip
                             title={
                                 theme.palette.mode === 'dark'
-                                    ? 'Switch to Light Mode'
-                                    : 'Switch to Dark Mode'
+                                    ? localized('switch-mode.light')
+                                    : localized('switch-mode.dark')
                             }
                         >
                             <MacIconNavButton
@@ -257,7 +258,7 @@ export default function Navbar() {
                         </Tooltip>
                     </Box>
                     <Box sx={{paddingRight: 1, display: {xs: 'none', md: 'flex'}}}>
-                        <Tooltip title="Settings">
+                        <Tooltip title={localized('settings-btn-lbl')}>
                             <MacIconNavButton
                                 aria-label="settings"
                                 color="inherit"

@@ -6,6 +6,18 @@
         "secondary": "Secondaire",
         "btn-clicked-msg": "Bouton cliqué!"
     },
+    "navbar": {
+        "pages": {
+            "1": "Page 1",
+            "2": "Page 2"
+        },
+        "switch-mode": {
+            "light": "Passer en mode lumière",
+            "dark": "Passer en mode sombre"
+        },
+        "skip-btn": "Passer au contenu principal",
+        "settings-btn-lbl": "Paramètres"
+    },
     "footer": {
         "contact-us": "Contactez-nous",
         "help-and-support": "Aide et soutien"
