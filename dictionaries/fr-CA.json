@@ -14,5 +14,11 @@
         "title": "Page 1",
         "download": "Télécharger",
         "format-placeholder": "Format de fichier"
+    },
+    "page-2": {
+        "title": "Page 2",
+        "edit": "Modifier",
+        "save": "Sauvegarder",
+        "delete": "Supprimer"
     }
 }
