@@ -9,5 +9,10 @@
     "footer": {
         "contact-us": "Contactez-nous",
         "help-and-support": "Aide et soutien"
+    },
+    "page-1": {
+        "title": "Page 1",
+        "download": "Télécharger",
+        "format-placeholder": "Format de fichier"
     }
 }
