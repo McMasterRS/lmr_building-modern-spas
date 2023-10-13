@@ -96,7 +96,7 @@ export default function Page() {
                     alignItems="center"
                     spacing={5}
                 >
-                    <Typography variant="h1">{localized('title')}</Typography>
+                    <Typography variant="h1">{localized('title')}!</Typography>
                     <Stack
                         direction="row"
                         justifyContent="space-between"
