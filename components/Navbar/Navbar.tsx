@@ -27,9 +27,10 @@ import React from "react";
 import SkipLink from "@/components/SkipLink/SkipLink";
 import {SkipButton} from "@/components/SkipLink/SkipButton";
 import styles_skip from '@/styles/SkipLink.module.scss'
-import {useTranslations} from 'next-intl';
+import {useTranslations, useLocale} from 'next-intl';
 
 export default function Navbar() {
+    const locale = useLocale();
     const localized = useTranslations('navbar');
     const theme = useTheme()
     const colorMode = React.useContext(ColorModeContext)
@@ -104,7 +105,24 @@ export default function Navbar() {
                         <ListItemIcon>
                             <SettingsIcon />
                         </ListItemIcon>
-                        <ListItemText primary={'Settings'} />
+                        <ListItemText primary={localized('settings-btn-lbl')} />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem key={'language'} disablePadding>
+                    <ListItemButton
+                        color="inherit"
+                        onClick={() => {
+                            if (currentRoute.includes('/fr-CA')) { // is currently using Canadian French locale
+                                let path = currentRoute.replace('/fr-CA', '/en-CA') // replace the locale prefix
+                                router.push(path)
+                            } else { // is currently using Canadian English locale
+                                let path = '/fr-CA'.concat(currentRoute) // adding a path prefix
+                                router.push(path)
+                            }
+                        }}
+                    >
+                        <ListItemIcon/>
+                        <ListItemText primary={locale === 'en-CA' ? 'Français' : 'English'} />
                     </ListItemButton>
                 </ListItem>
             </List>
@@ -271,6 +289,26 @@ export default function Navbar() {
                                 href="/settings"
                             >
                                 <SettingsIcon />
+                            </MacIconNavButton>
+                        </Tooltip>
+                    </Box>
+                    <Box sx={{paddingRight: 1, display: {xs: 'none', md: 'flex'}}}>
+                        <Tooltip title={localized('settings-btn-lbl')}>
+                            <MacIconNavButton
+                                aria-label="language"
+                                color="inherit"
+                                className={styles.nonActive}
+                                onClick={() => {
+                                    if (currentRoute.includes('/fr-CA')) { // is currently using Canadian French locale
+                                        let path = currentRoute.replace('/fr-CA', '/en-CA') // replace the locale prefix
+                                        router.push(path)
+                                    } else { // is currently using Canadian English locale
+                                        let path = '/fr-CA'.concat(currentRoute) // adding a path prefix
+                                        router.push(path)
+                                    }
+                                }}
+                            >
+                                {locale === 'en-CA' ? 'FR' : 'EN'}
                             </MacIconNavButton>
                         </Tooltip>
                     </Box>
