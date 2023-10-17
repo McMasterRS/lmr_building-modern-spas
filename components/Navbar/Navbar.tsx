@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
 import Link from 'next/link'
-import {usePathname, useRouter} from 'next/navigation'
+import {usePathname, useRouter} from 'next-intl/client'
 import styles from '@/styles/NavBar.module.css'
 import {MacIconNavButton, MacNavButton,} from '@/components/MacComponents/MacNavButton'
 import Tooltip from '@mui/material/Tooltip'
@@ -29,6 +29,8 @@ import {SkipButton} from "@/components/SkipLink/SkipButton";
 import styles_skip from '@/styles/SkipLink.module.scss'
 import {useTranslations, useLocale} from 'next-intl';
 import Radio from '@mui/material/Radio';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 export default function Navbar() {
     const locale = useLocale();
@@ -47,6 +49,8 @@ export default function Navbar() {
     }
 
     const [state, setState] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const openLocaleMenu = Boolean(anchorEl);
 
     const toggleDrawer =
         (open: boolean) =>
@@ -114,8 +118,7 @@ export default function Navbar() {
                         color="inherit"
                         onClick={() => {
                             if (locale !== 'en-CA') {
-                                let path = currentRoute.replace('/fr-CA', '/en-CA') // replace the locale prefix
-                                router.push(path)
+                                router.push(currentRoute, {locale: 'en-CA'})
                             }
                         }}
                     >
@@ -135,8 +138,7 @@ export default function Navbar() {
                         color="inherit"
                         onClick={() => {
                             if (locale !== 'fr-CA') {
-                                let path = '/fr-CA'.concat(currentRoute) // adding a path prefix
-                                router.push(path)
+                                router.push(currentRoute, {locale: 'fr-CA'})
                             }
                         }}
                     >
@@ -320,22 +322,48 @@ export default function Navbar() {
                     </Box>
                     <Box sx={{paddingRight: 1, display: {xs: 'none', md: 'flex'}}}>
                         <Tooltip title={localized('settings-btn-lbl')}>
-                            <MacIconNavButton
-                                aria-label="language"
-                                color="inherit"
-                                className={styles.nonActive}
-                                onClick={() => {
-                                    if (currentRoute.includes('/fr-CA')) { // is currently using Canadian French locale
-                                        let path = currentRoute.replace('/fr-CA', '/en-CA') // replace the locale prefix
-                                        router.push(path)
-                                    } else { // is currently using Canadian English locale
-                                        let path = '/fr-CA'.concat(currentRoute) // adding a path prefix
-                                        router.push(path)
-                                    }
-                                }}
-                            >
-                                {locale === 'en-CA' ? 'FR' : 'EN'}
-                            </MacIconNavButton>
+                            <>
+                                <MacIconNavButton
+                                    id="locale-button"
+                                    aria-label="locale-button"
+                                    aria-controls={openLocaleMenu ? 'locale-menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={openLocaleMenu ? 'true' : undefined}
+                                    color="inherit"
+                                    className={styles.nonActive}
+                                    onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                                        setAnchorEl(event.currentTarget);
+                                    }}
+                                >
+                                    { locale === 'en-CA' ? 'EN' : 'FR' }
+                                </MacIconNavButton>
+                                <Menu
+                                    id="locale-menu"
+                                    anchorEl={anchorEl}
+                                    open={openLocaleMenu}
+                                    onClose={() => {
+                                        setAnchorEl(null);
+                                    }}
+                                    MenuListProps={{
+                                        'aria-labelledby': 'locale-button',
+                                    }}
+                                >
+                                    <MenuItem
+                                        onClick={() => {
+                                            if (locale !== 'en-CA') {
+                                                router.push(currentRoute, {locale: 'en-CA'})
+                                            }
+                                        }}
+                                    >English - EN</MenuItem>
+                                    <MenuItem
+                                        onClick={() => {
+                                            if (locale !== 'fr-CA') {
+                                                router.push(currentRoute, {locale: 'fr-CA'})
+                                            }
+                                        }}
+                                    >français - FR</MenuItem>
+                                </Menu>
+                            </>
                         </Tooltip>
                     </Box>
                 </Toolbar>
