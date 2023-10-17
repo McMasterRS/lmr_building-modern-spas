@@ -28,6 +28,7 @@ import SkipLink from "@/components/SkipLink/SkipLink";
 import {SkipButton} from "@/components/SkipLink/SkipButton";
 import styles_skip from '@/styles/SkipLink.module.scss'
 import {useTranslations, useLocale} from 'next-intl';
+import Radio from '@mui/material/Radio';
 
 export default function Navbar() {
     const locale = useLocale();
@@ -108,21 +109,46 @@ export default function Navbar() {
                         <ListItemText primary={localized('settings-btn-lbl')} />
                     </ListItemButton>
                 </ListItem>
-                <ListItem key={'language'} disablePadding>
+                <ListItem key={'language_en-CA'} disablePadding>
                     <ListItemButton
                         color="inherit"
                         onClick={() => {
-                            if (currentRoute.includes('/fr-CA')) { // is currently using Canadian French locale
+                            if (locale !== 'en-CA') {
                                 let path = currentRoute.replace('/fr-CA', '/en-CA') // replace the locale prefix
                                 router.push(path)
-                            } else { // is currently using Canadian English locale
+                            }
+                        }}
+                    >
+                        <ListItemIcon>
+                            <Radio
+                                checked={locale === 'en-CA'}
+                                value="en-CA"
+                                name="en_ca-radio-buttons"
+                                inputProps={{ 'aria-label': 'en-CA' }}
+                            />
+                        </ListItemIcon>
+                        <ListItemText primary='English - EN' />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem key={'language_fr-CA'} disablePadding>
+                    <ListItemButton
+                        color="inherit"
+                        onClick={() => {
+                            if (locale !== 'fr-CA') {
                                 let path = '/fr-CA'.concat(currentRoute) // adding a path prefix
                                 router.push(path)
                             }
                         }}
                     >
-                        <ListItemIcon/>
-                        <ListItemText primary={locale === 'en-CA' ? 'Français' : 'English'} />
+                        <ListItemIcon>
+                            <Radio
+                                checked={locale === 'fr-CA'}
+                                value="fr-CA"
+                                name="fr_ca-radio-buttons"
+                                inputProps={{ 'aria-label': 'fr-CA' }}
+                            />
+                        </ListItemIcon>
+                        <ListItemText primary='français - FR' />
                     </ListItemButton>
                 </ListItem>
             </List>
