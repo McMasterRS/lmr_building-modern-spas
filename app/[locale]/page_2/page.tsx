@@ -11,10 +11,12 @@ import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete'
 import {SpeedDialAction, SpeedDialIcon} from "@mui/material";
+import {useTranslations} from 'next-intl';
 
 export default function Page_2() {
+    const localized = useTranslations('page-2');
     useEffect(() => {
-        document.title = 'Page 2'
+        document.title = localized('title')
     }, [])
 
     const [openSD, setOpenSD] = React.useState(false)
@@ -22,9 +24,9 @@ export default function Page_2() {
     const handleCloseSD = () => setOpenSD(false)
 
     const actions = [
-        {icon: <EditIcon />, name: 'Edit', action: handleCloseSD},
-        {icon: <SaveIcon />, name: 'Save', action: handleCloseSD},
-        {icon: <DeleteIcon />, name: 'Delete', action: handleCloseSD},
+        {icon: <EditIcon />, name: localized('edit'), action: handleCloseSD},
+        {icon: <SaveIcon />, name: localized('save'), action: handleCloseSD},
+        {icon: <DeleteIcon />, name: localized('delete'), action: handleCloseSD},
     ]
 
     return (
@@ -36,7 +38,7 @@ export default function Page_2() {
                       display="flex"
                       justifyContent="center"
                       alignItems="center">
-                      <Typography variant="h1">Page 2</Typography>
+                      <Typography variant="h1">{localized('title')}</Typography>
                       <MacSpeedDial
                           ariaLabel="Demo SpeedDial"
                           sx={{

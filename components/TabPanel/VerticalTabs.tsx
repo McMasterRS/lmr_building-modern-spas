@@ -16,6 +16,7 @@ import SettingsAccessibilityOutlinedIcon from '@mui/icons-material/SettingsAcces
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import IconButton from "@mui/material/IconButton";
+import {useTranslations} from 'next-intl';
 
 interface TabPanelProps {
     children?: React.ReactNode
@@ -52,13 +53,19 @@ function a11yProps(index: number) {
 
 
 export default function VerticalTabs() {
+    const localized = useTranslations('settings.tabs');
     const [value, setValue] = React.useState(0)
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue)
     }
 
-    const tabs = ['Notifications', 'Privacy', 'Accessibility', 'Account'];
+    const tabs = [
+        localized('notifications'),
+        localized('privacy'),
+        localized('accessibility'),
+        localized('account')
+    ];
     const icons = [<NotificationsNoneOutlinedIcon key={'notifications'}/>, <LockOutlinedIcon key={'privacy'}/>, <SettingsAccessibilityOutlinedIcon key={'accessibility'}/>, <ManageAccountsOutlinedIcon key={'account'}/>]
 
     const handleChangeDrawer = (e: React.MouseEvent<HTMLDivElement>, newValue: number) => {
@@ -147,23 +154,23 @@ export default function VerticalTabs() {
                         variant="settingTitle"
                         gutterBottom
                     >
-                        Notifications
+                        {localized('notifications')}
                     </Typography>
                     <FormControl sx={{m: 1, minWidth: 300}}>
                         <InputLabel id="demo-simple-select-label" htmlFor="demo-simple-select">
-                            Demo Dropdown Menu
+                        {localized('dropdown-placeholder')}
                         </InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            label="Demo Dropdown Menu"
+                            label={localized('dropdown-placeholder')}
                             inputProps={{
                                 id:'demo-simple-select',
                             }}
                         >
-                            <MenuItem value={1}>Option 1</MenuItem>
-                            <MenuItem value={2}>Option 2</MenuItem>
-                            <MenuItem value={3}>Option 3</MenuItem>
+                            <MenuItem value={1}>{localized('option-placeholder')} 1</MenuItem>
+                            <MenuItem value={2}>{localized('option-placeholder')} 2</MenuItem>
+                            <MenuItem value={3}>{localized('option-placeholder')} 3</MenuItem>
                         </Select>
                     </FormControl>
                 </TabPanel>
@@ -173,9 +180,9 @@ export default function VerticalTabs() {
                         variant="settingTitle"
                         gutterBottom
                     >
-                        Privacy
+                        {localized('privacy')}
                     </Typography>
-                    Placeholder 2
+                    {localized('placeholder')} 2
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                     <Typography
@@ -183,9 +190,9 @@ export default function VerticalTabs() {
                         variant="settingTitle"
                         gutterBottom
                     >
-                        Accessibility
+                        {localized('accessibility')}
                     </Typography>
-                    Placeholder 3
+                    {localized('placeholder')} 3
                 </TabPanel>
                 <TabPanel value={value} index={3}>
                     <Typography
@@ -193,9 +200,9 @@ export default function VerticalTabs() {
                         variant="settingTitle"
                         gutterBottom
                     >
-                        Account
+                        {localized('account')}
                     </Typography>
-                    Placeholder 4
+                    {localized('placeholder')} 4
                 </TabPanel>
             </Box>
         </>

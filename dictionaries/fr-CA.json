@@ -1,0 +1,59 @@
+{
+    "index": {
+        "title": "Bonjour le monde",
+        "drop-area-placeholder": "Cliquez ici et sélectionnez le(s) fichier(s)",
+        "primary": "Primaire",
+        "secondary": "Secondaire",
+        "btn-clicked-msg": "Bouton cliqué!"
+    },
+    "navbar": {
+        "pages": {
+            "1": "Page 1",
+            "2": "Page 2"
+        },
+        "switch-mode": {
+            "light": "Passer en mode lumière",
+            "dark": "Passer en mode sombre"
+        },
+        "skip-btn": "Passer au contenu principal",
+        "settings-btn-lbl": "Paramètres"
+    },
+    "footer": {
+        "contact-us": "Contactez-nous",
+        "help-and-support": "Aide et soutien"
+    },
+    "breadcrumbs": {
+        "home": "Maison",
+        "page-1": "Page 1",
+        "page-2": "Page 2",
+        "settings": "Paramètres",
+        "support": "Aide et soutien"
+    },
+    "page-1": {
+        "title": "Page 1",
+        "download": "Télécharger",
+        "format-placeholder": "Format de fichier"
+    },
+    "page-2": {
+        "title": "Page 2",
+        "edit": "Modifier",
+        "save": "Sauvegarder",
+        "delete": "Supprimer"
+    },
+    "support": {
+        "title": "Soutien",
+        "title2": "Aide et soutien"
+    },
+    "settings": {
+        "title": "Paramètres",
+        "tabs": {
+            "notifications": "Notifications",
+            "privacy": "Confidentialité",
+            "accessibility": "Accessibilité",
+            "account": "Compte",
+            "dropdown-placeholder": "Menu déroulant Démo",
+            "option-placeholder": "Option",
+            "placeholder": "Espace réservé"
+        }
+    }
+}

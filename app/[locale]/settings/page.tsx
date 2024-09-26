@@ -8,10 +8,12 @@ import Box from '@mui/material/Box'
 import VerticalTabs from '@/components/TabPanel/VerticalTabs'
 import {Container} from '@mui/material'
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
+import {useTranslations} from 'next-intl';
 
 export default function Settings() {
+    const localized = useTranslations('settings');
     useEffect(() => {
-        document.title = 'Settings'
+        document.title = localized('title')
     }, [])
 
     return (
@@ -23,7 +25,7 @@ export default function Settings() {
                     variant="h2"
                     gutterBottom
                 >
-                    Settings
+                    {localized('title')}
                 </Typography>
                 <Box sx={{width: '100%', maxWidth: 1000}}>
                     <VerticalTabs />

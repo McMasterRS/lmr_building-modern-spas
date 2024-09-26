@@ -16,6 +16,7 @@ import Tooltip from "@mui/material/Tooltip";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {MacSwitch} from "@/components/MacComponents/MacSwitch";
 import {MacCheckbox} from "@/components/MacComponents/MacCheckbox";
+import {useTranslations} from 'next-intl';
 
 const StyledMenu = styled((props: MenuProps) => (
     <Menu
@@ -62,8 +63,9 @@ const StyledMenu = styled((props: MenuProps) => (
 }))
 
 export default function Page_1() {
+    const localized = useTranslations('page-1');
     useEffect(() => {
-        document.title = 'Page 1'
+        document.title = localized('title')
     }, [])
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -84,8 +86,8 @@ export default function Page_1() {
                   display="flex"
                   justifyContent="center"
                   alignItems="center">
-                  <Typography variant="h1">Page 1</Typography>
-                  <Tooltip title={useMediaQuery(useTheme().breakpoints.down('md')) ? 'Download' : ''} >
+                  <Typography variant="h1">{localized('title')}</Typography>
+                  <Tooltip title={useMediaQuery(useTheme().breakpoints.down('md')) ? localized('download') : ''} >
                       <MacButton
                           id="download-button"
                           sx={{
@@ -106,7 +108,7 @@ export default function Page_1() {
                           endIcon={<KeyboardArrowDownIcon />}
                           mainColor="secondary"
                       >
-                          {useMediaQuery(useTheme().breakpoints.up('md')) ? 'Download' : ''}
+                          {useMediaQuery(useTheme().breakpoints.up('md')) ? localized('download') : ''}
                       </MacButton>
                   </Tooltip>
 
@@ -120,13 +122,13 @@ export default function Page_1() {
                       onClose={handleCloseMenu}
                   >
                       <MenuItem onClick={handleClickMenu}>
-                          File Format 1
+                      {localized('format-placeholder')} 1
                       </MenuItem>
                       <MenuItem onClick={handleClickMenu}>
-                          File Format 2
+                        {localized('format-placeholder')} 2
                       </MenuItem>
                       <MenuItem onClick={handleClickMenu}>
-                          File Format 3
+                        {localized('format-placeholder')} 3
                       </MenuItem>
                   </StyledMenu>
               </Box>

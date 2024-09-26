@@ -7,8 +7,10 @@ import {Grid} from '@mui/material'
 import Link from 'next/link'
 import Stack from "@mui/material/Stack";
 import {useTheme} from "@mui/material/styles";
+import {useTranslations} from 'next-intl';
 
 export default function Footer() {
+    const localized = useTranslations('footer');
     return (
         <Paper
             sx={{
@@ -64,7 +66,7 @@ export default function Footer() {
                                 variant="caption"
                                 color="inherit"
                             >
-                                Help and Support
+                                {localized('help-and-support')}
                             </Typography>
                         </Box>
                     </Grid>
@@ -99,7 +101,7 @@ export default function Footer() {
                                 variant="caption"
                                 color="inherit"
                             >
-                                Contact Us
+                                {localized('contact-us')}
                             </Typography>
                         </Box>
                     </Grid>
@@ -126,7 +128,7 @@ export default function Footer() {
                             variant="caption"
                             color="inherit"
                         >
-                            Help and Support
+                            {localized('help-and-support')}
                         </Typography>
                     </Box>
 
@@ -157,7 +159,7 @@ export default function Footer() {
                             color="inherit"
                             sx={{mb: 1}}
                         >
-                            Contact Us
+                            {localized('contact-us')}
                         </Typography>
                     </Box>
                 </Stack>

@@ -6,10 +6,12 @@ import {useEffect} from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
+import {useTranslations} from 'next-intl';
 
 export default function Support() {
+    const localized = useTranslations('support');
     useEffect(() => {
-        document.title = 'Support'
+        document.title = localized('title')
     }, [])
 
     return (
@@ -21,7 +23,7 @@ export default function Support() {
                         display="flex"
                         justifyContent="center"
                         alignItems="center">
-                        <Typography variant="h1">Help and Support</Typography>
+                        <Typography variant="h1">{localized('title2')}</Typography>
                     </Box>
                 </Container>
             </main>

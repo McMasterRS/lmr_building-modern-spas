@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
 import Link from 'next/link'
-import {usePathname, useRouter} from 'next/navigation'
+import {usePathname, useRouter} from 'next-intl/client'
 import styles from '@/styles/NavBar.module.css'
 import {MacIconNavButton, MacNavButton,} from '@/components/MacComponents/MacNavButton'
 import Tooltip from '@mui/material/Tooltip'
@@ -27,15 +27,20 @@ import React from "react";
 import SkipLink from "@/components/SkipLink/SkipLink";
 import {SkipButton} from "@/components/SkipLink/SkipButton";
 import styles_skip from '@/styles/SkipLink.module.scss'
-
-const pages = [
-    ['Page 1', '/page_1'],
-    ['Page 2', '/page_2'],
-]
+import {useTranslations, useLocale} from 'next-intl';
+import Radio from '@mui/material/Radio';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 export default function Navbar() {
+    const locale = useLocale();
+    const localized = useTranslations('navbar');
     const theme = useTheme()
     const colorMode = React.useContext(ColorModeContext)
+    const pages = [
+        [localized('pages.1'), '/page_1'],
+        [localized('pages.2'), '/page_2'],
+    ]
 
     const imgStyle = {
         paddingTop: '10px',
@@ -44,6 +49,8 @@ export default function Navbar() {
     }
 
     const [state, setState] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const openLocaleMenu = Boolean(anchorEl);
 
     const toggleDrawer =
         (open: boolean) =>
@@ -94,8 +101,8 @@ export default function Navbar() {
                             )}
                         </ListItemIcon>
                         <ListItemText primary={theme.palette.mode === 'dark'
-                            ? 'Switch to Light Mode'
-                            : 'Switch to Dark Mode'} />
+                            ? localized('switch-mode.light')
+                            : localized('switch-mode.dark')} />
                     </ListItemButton>
                 </ListItem>
                 <ListItem key={'settings'} disablePadding>
@@ -103,7 +110,47 @@ export default function Navbar() {
                         <ListItemIcon>
                             <SettingsIcon />
                         </ListItemIcon>
-                        <ListItemText primary={'Settings'} />
+                        <ListItemText primary={localized('settings-btn-lbl')} />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem key={'language_en-CA'} disablePadding>
+                    <ListItemButton
+                        color="inherit"
+                        onClick={() => {
+                            if (locale !== 'en-CA') {
+                                router.push(currentRoute, {locale: 'en-CA'})
+                            }
+                        }}
+                    >
+                        <ListItemIcon>
+                            <Radio
+                                checked={locale === 'en-CA'}
+                                value="en-CA"
+                                name="en_ca-radio-buttons"
+                                inputProps={{ 'aria-label': 'en-CA' }}
+                            />
+                        </ListItemIcon>
+                        <ListItemText primary='English - EN' />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem key={'language_fr-CA'} disablePadding>
+                    <ListItemButton
+                        color="inherit"
+                        onClick={() => {
+                            if (locale !== 'fr-CA') {
+                                router.push(currentRoute, {locale: 'fr-CA'})
+                            }
+                        }}
+                    >
+                        <ListItemIcon>
+                            <Radio
+                                checked={locale === 'fr-CA'}
+                                value="fr-CA"
+                                name="fr_ca-radio-buttons"
+                                inputProps={{ 'aria-label': 'fr-CA' }}
+                            />
+                        </ListItemIcon>
+                        <ListItemText primary='français - FR' />
                     </ListItemButton>
                 </ListItem>
             </List>
@@ -119,7 +166,7 @@ export default function Navbar() {
         >
             <Box sx={{zIndex: 1300}}>
                 <SkipLink className={styles_skip.skipLink} skipTo={"main:first-of-type"}>
-                    <SkipButton mainColor={"primary"} sx={{marginTop:2.4, marginLeft:2, color: 'white'}}>Skip to main content</SkipButton>
+                    <SkipButton mainColor={"primary"} sx={{marginTop:2.4, marginLeft:2, color: 'white'}}>{localized('skip-btn')}</SkipButton>
                 </SkipLink>
             </Box>
             <Container maxWidth="xl">
@@ -239,8 +286,8 @@ export default function Navbar() {
                         <Tooltip
                             title={
                                 theme.palette.mode === 'dark'
-                                    ? 'Switch to Light Mode'
-                                    : 'Switch to Dark Mode'
+                                    ? localized('switch-mode.light')
+                                    : localized('switch-mode.dark')
                             }
                         >
                             <MacIconNavButton
@@ -257,7 +304,7 @@ export default function Navbar() {
                         </Tooltip>
                     </Box>
                     <Box sx={{paddingRight: 1, display: {xs: 'none', md: 'flex'}}}>
-                        <Tooltip title="Settings">
+                        <Tooltip title={localized('settings-btn-lbl')}>
                             <MacIconNavButton
                                 aria-label="settings"
                                 color="inherit"
@@ -271,6 +318,52 @@ export default function Navbar() {
                             >
                                 <SettingsIcon />
                             </MacIconNavButton>
+                        </Tooltip>
+                    </Box>
+                    <Box sx={{paddingRight: 1, display: {xs: 'none', md: 'flex'}}}>
+                        <Tooltip title={localized('settings-btn-lbl')}>
+                            <>
+                                <MacIconNavButton
+                                    id="locale-button"
+                                    aria-label="locale-button"
+                                    aria-controls={openLocaleMenu ? 'locale-menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={openLocaleMenu ? 'true' : undefined}
+                                    color="inherit"
+                                    className={styles.nonActive}
+                                    onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                                        setAnchorEl(event.currentTarget);
+                                    }}
+                                >
+                                    { locale === 'en-CA' ? 'EN' : 'FR' }
+                                </MacIconNavButton>
+                                <Menu
+                                    id="locale-menu"
+                                    anchorEl={anchorEl}
+                                    open={openLocaleMenu}
+                                    onClose={() => {
+                                        setAnchorEl(null);
+                                    }}
+                                    MenuListProps={{
+                                        'aria-labelledby': 'locale-button',
+                                    }}
+                                >
+                                    <MenuItem
+                                        onClick={() => {
+                                            if (locale !== 'en-CA') {
+                                                router.push(currentRoute, {locale: 'en-CA'})
+                                            }
+                                        }}
+                                    >English - EN</MenuItem>
+                                    <MenuItem
+                                        onClick={() => {
+                                            if (locale !== 'fr-CA') {
+                                                router.push(currentRoute, {locale: 'fr-CA'})
+                                            }
+                                        }}
+                                    >français - FR</MenuItem>
+                                </Menu>
+                            </>
                         </Tooltip>
                     </Box>
                 </Toolbar>

@@ -8,13 +8,7 @@ import Box from '@mui/material/Box'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import Stack from '@mui/material/Stack'
 import {MacButton} from '@/components/MacComponents/MacButton'
-
-const breadcrumbNameMap: {[key: string]: string} = {
-    '/page_1': 'Page 1',
-    '/page_2': 'Page 2',
-    '/settings': 'Settings',
-    '/support': 'Help and Support',
-}
+import {useTranslations} from 'next-intl';
 
 interface LinkRouterProps extends LinkProps {
     href: string
@@ -26,11 +20,19 @@ function LinkRouter(props: LinkRouterProps) {
 }
 
 export default function BreadCrumbs() {
+    const localized = useTranslations('breadcrumbs');
     const router = useRouter()
 
     const pathname = usePathname();
 
     const pathnames = pathname ? pathname.split('/').filter(x => x) : [];
+
+    const breadcrumbNameMap: {[key: string]: string} = {
+        '/page_1': localized('page-1'),
+        '/page_2': localized('page-2'),
+        '/settings': localized('settings'),
+        '/support': localized('support'),
+    }
 
     return (
         <Box sx={{paddingBottom: 2}}>
@@ -40,7 +42,7 @@ export default function BreadCrumbs() {
                 </MacButton>
                 <Breadcrumbs sx={{paddingTop: 1}} aria-label="breadcrumb">
                     <LinkRouter underline="hover" color="inherit" href="/">
-                        Home
+                        {localized('home')}
                     </LinkRouter>
                     {pathnames.map((value, index) => {
                         const last = index === pathnames.length - 1

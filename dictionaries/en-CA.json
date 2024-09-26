@@ -1,0 +1,59 @@
+{
+    "index": {
+        "title": "Hello World",
+        "drop-area-placeholder": "Click here and select file(s)",
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "btn-clicked-msg": "Button Clicked!"
+    },
+    "navbar": {
+        "pages": {
+            "1": "Page 1",
+            "2": "Page 2"
+        },
+        "switch-mode": {
+            "light": "Switch to Light Mode",
+            "dark": "Switch to Dark Mode"
+        },
+        "skip-btn": "Skip to main content",
+        "settings-btn-lbl": "Settings"
+    },
+    "footer": {
+        "contact-us": "Contact Us",
+        "help-and-support": "Help and Support"
+    },
+    "breadcrumbs": {
+        "home": "Home",
+        "page-1": "Page 1",
+        "page-2": "Page 2",
+        "settings": "Settings",
+        "support": "Help and Support"
+    },
+    "page-1": {
+        "title": "Page 1",
+        "download": "Download",
+        "format-placeholder": "File Format"
+    },
+    "page-2": {
+        "title": "Page 2",
+        "edit": "Edit",
+        "save": "Save",
+        "delete": "Delete"
+    },
+    "support": {
+        "title": "Support",
+        "title2": "Help and Support"
+    },
+    "settings": {
+        "title": "Settings",
+        "tabs": {
+            "notifications": "Notification",
+            "privacy": "Privacy",
+            "accessibility": "Accessibility",
+            "account": "Account",
+            "dropdown-placeholder": "Demo Dropdown Menu",
+            "option-placeholder": "Option",
+            "placeholder": "Placeholder"
+        }
+    }
+}
